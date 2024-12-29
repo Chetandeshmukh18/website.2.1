@@ -1,0 +1,94 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background-image: url('https://t3.ftcdn.net/jpg/08/78/55/46/240_F_878554615_HL0M0wYnBwAs8NcAYXAH0d6SzYOt5UOY.jpg');
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Thank You Section */
+.thank-you-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.thank-you-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    color: #2ecc71;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.order-summary {
+    margin-bottom: 30px;
+}
+
+.order-summary h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+.order-summary ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-summary li {
+    font-size: 16px;
+    margin: 8px 0;
+    text-align: left;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.action-buttons a {
+    padding: 12px 25px;
+    text-decoration: none;
+    color: white;
+    background-color: #3498db;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.action-buttons a:hover {
+    background-color: #2980b9;
+}
+
+.continue-shopping-btn {
+    background-color: #2ecc71;
+}
+
+.continue-shopping-btn:hover {
+    background-color: #27ae60;
+}

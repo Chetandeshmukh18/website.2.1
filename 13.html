@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Reviews - ShopEasy</title>
+    <link rel="stylesheet" href="13.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">SHOPPING MARKET</div>
+        <nav>
+            <ul>
+                <li><a href="index1.html">Home</a></li>
+            
+                <li><a href="11.html">About Us</a></li>
+                <li><a href="12.html">Contact</a></li>
+                <li><a href="ac.html">CART</a></li>
+                <li><a href="#">REVIEW</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="review-section">
+            <h1>Customer Reviews</h1>
+            <p>Read what our customers have to say about this product.</p>
+
+            <!-- Review List -->
+            <div class="reviews">
+                <div class="review-card">
+                    <div class="review-header">
+                        <h3>John Doe</h3>
+                        <div class="rating">⭐⭐⭐⭐☆</div>
+                    </div>
+                    <p class="review-text">Great product! It arrived on time and exactly as described. I love using it every day.</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <h3>Jane Smith</h3>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="review-text">Fantastic quality and very user-friendly. Highly recommend this to anyone looking for a reliable product!</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <h3>Mark Wilson</h3>
+                        <div class="rating">⭐⭐⭐☆☆</div>
+                    </div>
+                    <p class="review-text">Good product, but it could be improved in terms of design. It works fine, though!</p>
+                </div>
+            </div>
+
+            <!-- Review Form -->
+            <div class="review-form">
+                <h2>Leave a Review</h2>
+                <form action="#" method="POST">
+                    <div class="input-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="rating">Rating</label>
+                        <select id="rating" name="rating" required>
+                            <option value="5">⭐⭐⭐⭐⭐</option>
+                            <option value="4">⭐⭐⭐⭐☆</option>
+                            <option value="3">⭐⭐⭐☆☆</option>
+                            <option value="2">⭐⭐☆☆☆</option>
+                            <option value="1">⭐☆☆☆☆</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="review-text">Your Review</label>
+                        <textarea id="review-text" name="review-text" rows="5" placeholder="Write your review here" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Review</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy;SHOPPING MARKET</p>
+    </footer>
+
+</body>
+</html>

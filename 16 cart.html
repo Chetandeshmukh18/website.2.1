@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Shopping Market</title>
+  <link rel="stylesheet" href="5.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Shopping Market</h1>
+      <nav>
+        <ul>
+          
+          <li><a href="2.html">HOME</a></li>
+          <li><a href="11.html">ABOUT US</a></li>
+          <li><a href="12.HTML">CONTACT</a></li>
+        
+          <li><a href="13.HTML">REVEIW</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <main>
+        <section class="cart-page">
+            <h1>Your Shopping Cart</h1>
+            <div class="cart-items">
+                <div class="cart-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSr-GCCgtN5z5QLK2tx9rDbiwO7kxbNzWahA&s" alt="Basketball">
+                    <div class="product-details">
+                        <h3>Basket ball </h3>
+                        <p class="price">Rs 342.00</p>
+                        <p class="quantity">Quantity: 1</p>
+                    <button class="remove-btn">Remove</button>
+                </div>
+                
+            <div class="cart-summary">
+                <p>Total Items: 1</p>
+                <p>Total Price: Rs342.00</p>
+                <button class="checkout-btn"><a href="7.html">Proceed to Checkout</button></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024  SHOPPING MARKET</p>
+    </footer>
+</body> <script>// Get all remove buttons
+  const removeButtons = document.querySelectorAll('.remove-btn');
+  
+  // Add event listener to each remove button
+  removeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Get the cart item (the entire div that includes the image, product details, and remove button)
+      const cartItem = button.closest('.cart-item');
+      
+      // Remove the cart item from the DOM
+      cartItem.remove();
+      
+      // Update the cart summary (total items and total price)
+      updateCartSummary();
+    });
+  });
+  
+  // Function to update the cart summary after removing an item
+  function updateCartSummary() {
+    const cartItems = document.querySelectorAll('.cart-item');
+    const totalItems = cartItems.length;
+    const totalPrice = Array.from(cartItems).reduce((total, item) => {
+      const price = parseFloat(item.querySelector('.price').textContent.replace('Rs', '').trim());
+      return total + price;
+    }, 0);
+  
+    // Update the total items and total price display
+    document.querySelector('.cart-summary p:nth-child(1)').textContent = `Total Items: ${totalItems}`;
+    document.querySelector('.cart-summary p:nth-child(2)').textContent = `Total Price: Rs${totalPrice.toFixed(2)}`;
+  }
+  </script>
+</html>

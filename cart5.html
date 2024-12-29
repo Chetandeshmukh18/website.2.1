@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Market</title>
+  <link rel="stylesheet" href="5.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Shopping Market</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="11.html">ABOUT US</a></li>
+          <li><a href="12.HTML">CONTACT</a></li>
+          <li><a href="13.HTML">REVIEW</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="cart-page">
+      <h1>Your Shopping Cart</h1>
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz6grbzOVVTnMnDDIEipVr_yfgvCvViaUmlg&s" alt="Cricket Bat">
+          <div class="product-details">
+            <h3>Cricket Bat</h3>
+            <p class="price" data-price="1200.00">Rs 1200.00</p>
+            <div class="quantity">
+              <label for="quantity">Quantity:</label>
+              <button class="quantity-decrement">-</button>
+              <input type="number" class="quantity-input" value="1" min="1">
+              <button class="quantity-increment">+</button>
+            </div>
+          </div>
+          <button class="remove-btn">Remove</button>
+        </div>
+      </div>
+
+      <div class="cart-summary">
+        <p>Total Items: 1</p>
+        <p>Total Price: Rs 1200.00</p>
+        <button class="checkout-btn"><a href="7.html">Proceed to Checkout</a></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 SHOPPING MARKET</p>
+  </footer>
+
+  <script>
+    // Get all remove buttons
+    const removeButtons = document.querySelectorAll('.remove-btn');
+    
+    // Add event listener to each remove button
+    removeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Get the cart item (the entire div that includes the image, product details, and remove button)
+        const cartItem = button.closest('.cart-item');
+        
+        // Remove the cart item from the DOM
+        cartItem.remove();
+        
+        // Update the cart summary (total items and total price)
+        updateCartSummary();
+      });
+    });
+
+    // Function to update the cart summary after removing an item
+    function updateCartSummary() {
+      const cartItems = document.querySelectorAll('.cart-item');
+      const totalItems = cartItems.length;
+      const totalPrice = Array.from(cartItems).reduce((total, item) => {
+        const price = parseFloat(item.querySelector('.price').textContent.replace('Rs', '').trim());
+        const quantity = parseInt(item.querySelector('.quantity-input').value);
+        return total + (price * quantity);
+      }, 0);
+    
+      // Update the total items and total price display
+      document.querySelector('.cart-summary p:nth-child(1)').textContent = `Total Items: ${totalItems}`;
+      document.querySelector('.cart-summary p:nth-child(2)').textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
+    }
+
+    // Add event listener to quantity input fields for quantity changes
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+    quantityInputs.forEach(input => {
+      input.addEventListener('input', function() {
+        updatePriceAndSummary(input);
+      });
+    });
+
+    // Add event listener to increment and decrement buttons
+    const incrementButtons = document.querySelectorAll('.quantity-increment');
+    const decrementButtons = document.querySelectorAll('.quantity-decrement');
+    
+    incrementButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const input = button.previousElementSibling; // Get the quantity input
+        input.value = parseInt(input.value) + 1;
+        updatePriceAndSummary(input);
+      });
+    });
+    
+    decrementButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const input = button.nextElementSibling; // Get the quantity input
+        if (parseInt(input.value) > 1) {
+          input.value = parseInt(input.value) - 1;
+          updatePriceAndSummary(input);
+        }
+      });
+    });
+
+    // Function to update price and cart summary when quantity changes
+    function updatePriceAndSummary(input) {
+      const cartItem = input.closest('.cart-item');
+      const price = parseFloat(cartItem.querySelector('.price').getAttribute('data-price'));
+      const quantity = parseInt(input.value);
+      const totalPrice = price * quantity;
+
+      // Update the price display for this item
+      cartItem.querySelector('.price').textContent = `Rs ${totalPrice.toFixed(2)}`;
+      
+      // Update the cart summary
+      updateCartSummary();
+    }
+
+    // Initial call to update cart summary
+    updateCartSummary();
+  </script>
+</body>
+</html>

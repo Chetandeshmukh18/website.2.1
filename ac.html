@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .cart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .cart-item img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+        .cart-item-price {
+            font-weight: bold;
+            align-self: center;
+        }
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .quantity-container input {
+            width: 40px;
+            text-align: center;
+        }
+        .total-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+        .checkout-btn {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .checkout-btn:hover {
+            background-color: darkgreen;
+        }
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .remove-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cart-container">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div class="total-price">
+        Total: <span id="total-price">RS 0.00</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()"><A HREF="7.html"> PROCEED TO CHECKOUT</A></button>
+</div>
+
+<script>
+    // Function to parse URL parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            product: params.get('product'),
+            price: parseFloat(params.get('price')) || 0,
+            image: params.get('image') || ''  // Correctly retrieve image parameter
+        };
+    }
+
+    // Adding the product to the cart (simulated)
+    function addToCart() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const { product, price, image } = getQueryParams();
+        
+        // Check if the product already exists in the cart
+        if (product && price > 0) {
+            const existingItem = cartItems.find(item => item.product === product);
+            
+            if (existingItem) {
+                // If the product exists, increase the quantity
+                existingItem.quantity += 1;
+            } else {
+                // If it's a new product, add it to the cart
+                cartItems.push({ product, price, image, quantity: 1 });
+            }
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+        displayCart();
+    }
+
+    // Display cart items from localStorage
+    function displayCart() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartContainer = document.getElementById('cart-items');
+        cartContainer.innerHTML = '';  // Clear previous cart items
+        let totalPrice = 0;
+
+        cartItems.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.product}" />
+                <div class="cart-item-details">
+                    <p><strong>${item.product}</strong></p>
+                    <div class="quantity-container">
+                        <button onclick="changeQuantity(${index}, -1)">-</button>
+                        <input type="number" value="${item.quantity}" readonly />
+                        <button onclick="changeQuantity(${index}, 1)">+</button>
+                    </div>
+                </div>
+                <div class="cart-item-price">
+                    RS ${(item.price * item.quantity).toFixed(2)}
+                </div>
+                <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+            `;
+
+            cartContainer.appendChild(itemElement);
+            totalPrice += item.price * item.quantity;
+        });
+
+        // Update the total price
+        document.getElementById('total-price').textContent = `RS ${totalPrice.toFixed(2)}`;
+    }
+
+    // Change the quantity of the item
+    function changeQuantity(index, change) {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+        if (cartItems[index].quantity + change > 0) {
+            cartItems[index].quantity += change;
+        } else {
+            cartItems[index].quantity = 1;  // Prevent quantity from going below 1
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        displayCart();
+    }
+
+    // Remove an item from the cart
+    function removeItem(index) {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        cartItems.splice(index, 1);  // Remove the item at the given index
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        displayCart();
+    }
+
+    // Checkout function (Just a placeholder for now)
+    function checkout() {
+        alert('Proceeding to checkout...');
+        // Redirect to a checkout page (you can create your own checkout page)
+        // window.location.href = 'checkout.html';
+    }
+
+    // Call addToCart to populate cart data if product is added
+    addToCart();
+</script>
+
+</body>
+</html>

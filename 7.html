@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Payment and Address</title>
+    <link rel="stylesheet" href="7.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <h1>Shopping Market</h1>
+          <nav>
+            <ul>
+              
+              <li><a href="index1.html">SHOP</a></li>
+              <li><a href="11.html">ABOUT US</a></li>
+              <li><a href="12.html">CONTACT</a></li>
+              <li><a href="ac.html">CART</a></li>
+              <li><a href="13.html">REVEIW</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    
+
+    <main>
+        <section class="checkout">
+            <h1>Checkout</h1>
+            <form action="payment-process.html" method="POST">
+                <!-- Shipping Address Section -->
+                <fieldset>
+                    <legend>Shipping Address</legend>
+                    <div class="form-group">
+                        <label for="shipping-name">Full Name</label>
+                        <input type="text" id="shipping-name" name="shipping-name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shipping-address">Address</label>
+                        <input type="text" id="shipping-address" name="shipping-address" placeholder="Enter your shipping address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shipping-city">City</label>
+                        <input type="text" id="shipping-city" name="shipping-city" placeholder="Enter your city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shipping-postal-code">Postal Code</label>
+                        <input type="text" id="shipping-postal-code" name="shipping-postal-code" placeholder="Enter postal code" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shipping-country">Country</label>
+                        <input type="text" id="shipping-country" name="shipping-country" placeholder="Enter your country" required>
+                    </div>
+                </fieldset>
+
+                <!-- Billing Address Section -->
+                <fieldset>
+                    <legend>Billing Address</legend>
+                    <div class="form-group">
+                        <label for="billing-name">Full Name</label>
+                        <input type="text" id="billing-name" name="billing-name" placeholder="Enter your billing name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="billing-address">Address</label>
+                        <input type="text" id="billing-address" name="billing-address" placeholder="Enter your billing address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="billing-city">City</label>
+                        <input type="text" id="billing-city" name="billing-city" placeholder="Enter your city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="billing-postal-code">Postal Code</label>
+                        <input type="text" id="billing-postal-code" name="billing-postal-code" placeholder="Enter postal code" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="billing-country">Country</label>
+                        <input type="text" id="billing-country" name="billing-country" placeholder="Enter your country" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="same-address" name="same-address">
+                        <label for="same-address">Billing address is the same as shipping address</label>
+                    </div>
+                </fieldset>
+
+                <!-- Payment Details Section -->
+                <button type="submit" class="submit-btn"><a href="6.html">Proceed to Payment</button></a>
+</body>
+</html>

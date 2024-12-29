@@ -1,0 +1,157 @@
+/* Add some basic reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header styling */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Checkout Section */
+.checkout {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.checkout h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Media Queries for Mobile View */
+@media screen and (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        display: block;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .checkout {
+        padding: 15px;
+    }
+
+    .form-group input {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .checkout h1 {
+        font-size: 1.5rem;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
